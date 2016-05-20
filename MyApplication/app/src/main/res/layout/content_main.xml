@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:id="@+id/textView4"
-        android:visibility="invisible"/>
+        />
 
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
 
