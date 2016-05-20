@@ -9,26 +9,37 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     CallbackManager callbackManager;
     View view;
+    public static TextView textViewObj;
     BottomNavigationBar bottomNavigationBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textViewObj = (TextView) findViewById(R.id.textView4);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -52,12 +63,28 @@ public class MainActivity extends Activity
 
             @Override
             public void onTabReselected(int position) {
-                if(position < 2){
+                if (position < 2) {
                     Intent intent = new Intent(MainActivity.this, FacebookSignIn.class);
                     startActivity(intent);
                 }
             }
+
         });
+
+        //Bundle respBund = getIntent().getExtras();
+        //String val = respBund.getString("response");
+        //Log.d("TAG", "val:" + val);
+        //TextView tV=(TextView) findViewById(R.id.textView4);
+        //tV.setText(val);
+        //Log.d("TAG", "MainActivity TextView Text:" + tV.getText().toString());
+
+        /*Gson gson = new Gson();
+        Type collectionType = new TypeToken<List<String>>(){}.getType();
+        List<String> serverResponse = gson.fromJson(response, collectionType);
+        for(int i=0; i<6; i++) {
+            String important = serverResponse.get(i);
+            Log.d("TAG", important);
+        }*/
         bottomNavigationBar
                 .setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar
