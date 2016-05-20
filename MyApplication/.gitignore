@@ -1,0 +1,24 @@
+
+# default
+
+*.iml
+# .gradle
+/local.properties
+/.idea
+#/.idea/workspace.xml
+#/.idea/libraries
+.DS_Store
+/build
+/captures
+
+# other gitignore stuff
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Eclipse project files
+.classpath
+.project
