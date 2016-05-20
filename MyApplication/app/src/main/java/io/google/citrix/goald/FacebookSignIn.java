@@ -1,13 +1,10 @@
 package io.google.citrix.goald;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import java.net.HttpURLConnection;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,21 +12,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import org.apache.http.client.HttpClient;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-
-import java.io.IOException;
 
 
 /**
@@ -71,6 +59,9 @@ public class FacebookSignIn extends Activity{
                             Log.d("TAG", "onErrorResponse: That didn't work!");
                         }
                     });
+
+                Intent intent=new Intent(FacebookSignIn.this,MainActivity.class);
+                startActivity(intent);
                 // Add the request to the RequestQueue.
                 queue.add(stringRequest);
 
